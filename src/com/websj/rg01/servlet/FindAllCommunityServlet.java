@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/FindAllCommunityServlet")
-public class FindAllCommunityServlet extends HttpServlet {
+public class FindAllCommunityServlet extends HttpServlet {  //查询所有社区信息
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CommunityService communityService = new CommunityServiceImp();

@@ -17,4 +17,8 @@ public interface HouseholdDao {
 
     public List<Household> findall();  //查询所有用户信息
 
+    public int findHouseholdTotalCount(Map<String,String[]> condition);
+
+    public List<Household> findByPage(int start,int rows,Map<String,String[]> condition);
+
 }
