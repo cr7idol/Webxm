@@ -14,6 +14,12 @@ public class CommunityDaoImp implements CommunityDao {
     JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
 
     @Override
+    public void deleteCommunity(int id) {
+        String sql = "delete from community where id = ?";
+        jdbcTemplate.update(sql,id);
+    }
+
+    @Override
     public List<Community> findallCommunity() { //查询小区信息
         String sql = "select * from community";
         List<Community> communityList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Community>(Community.class));

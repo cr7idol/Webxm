@@ -1,5 +1,6 @@
 package com.websj.rg01.servlet;
 
+import com.websj.rg01.entity.Household;
 import com.websj.rg01.service.HouseholdService;
 import com.websj.rg01.service.imp.HouseholdServiceImp;
 
@@ -7,19 +8,19 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/deleteHouseholdServlet")
-public class deleteHouseholdServlet extends HttpServlet {   //删除
+@WebServlet("/FindallHouseholdListServlet")
+public class FindallHouseholdListServlet extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            //获取id
-            int id = Integer.parseInt(request.getParameter("id"));
-            //调用householdService.del 进行删除
+            //调用service中的额findall方法完成查询
             HouseholdService householdService = new HouseholdServiceImp();
-            householdService.deleteHouseholdUser(id);
-
-            //跳转到查询所有Servlet
-            response.sendRedirect(request.getContextPath()+"/FindAllCommunityListServlet");
+            List<Household> households = householdService.findall();
+            //讲household存入request域中
+            request.setAttribute("households",households);
+            //转发
+            request.getRequestDispatcher("").forward(request,response);
         }
 
         @Override

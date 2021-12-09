@@ -45,7 +45,7 @@ public class HouseholdServiceImp implements HouseholdService {
             currrentPage = 1;
         }
         //创建空PageBean对象
-        PageBean<Household> householdPageBean = new PageBean<>();
+        PageBean<Household> householdPageBean = new PageBean<Household>();
 
         householdPageBean.setCurrentPage(currrentPage);
         householdPageBean.setRows(rows);

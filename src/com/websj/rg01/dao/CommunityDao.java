@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface CommunityDao {
+    public void deleteCommunity(int id);//根据社区id删除小区信息
+
     public List<Community> findallCommunity();  //查询小区信息
 
     public void addCommnuity(Community community);//添加小区信息

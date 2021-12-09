@@ -1,7 +1,10 @@
 package com.websj.rg01.servlet;
 
+import com.websj.rg01.entity.Building;
 import com.websj.rg01.entity.Household;
+import com.websj.rg01.service.BuildingService;
 import com.websj.rg01.service.HouseholdService;
+import com.websj.rg01.service.imp.BuildingServiceImp;
 import com.websj.rg01.service.imp.HouseholdServiceImp;
 
 import javax.servlet.*;
@@ -10,15 +13,15 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/HouseholdListServlet")
-public class HouseholdListServlet extends HttpServlet {
+@WebServlet("/FindallBuildingListServlet")
+public class FindallBuildingListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //调用service中的额findall方法完成查询
-        HouseholdService householdService = new HouseholdServiceImp();
-        List<Household> households = householdService.findall();
+        //调用service中的findallBuilding方法完成查询
+        BuildingService buildingService = new BuildingServiceImp();
+        List<Building> buildings = buildingService.findallBuilding();
         //讲household存入request域中
-        request.setAttribute("households",households);
+        request.setAttribute("buildings",buildings);
         //转发
         request.getRequestDispatcher("").forward(request,response);
     }

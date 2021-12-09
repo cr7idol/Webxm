@@ -70,8 +70,7 @@ public class HouseholdDaoimp implements HouseholdDao {
                 object.add("%" + value + "%");  //?条件中的值
             }
         }
-        System.out.println(stringBuilder.toString());
-        System.out.println(object);
+
         return template.queryForObject(stringBuilder.toString(),Integer.class,object.toArray());
     }
 
@@ -82,7 +81,7 @@ public class HouseholdDaoimp implements HouseholdDao {
         //遍历
         Set<String> keySet = condition.keySet();
         //定义参数集合
-        List<Object> object =new ArrayList<>();
+        List<Object> object =new ArrayList<Object>();
 
         for (String s : keySet) {
             //排除分页条件参数
@@ -93,7 +92,7 @@ public class HouseholdDaoimp implements HouseholdDao {
             //判断value是否存在
             if (value != null && !"".equals(value)){
                 //表示存在
-                stringBuilder.append("and" + s + "like ?");
+                stringBuilder.append(" and" + s + " like ? ");
                 object.add("%" + value + "%");  //?条件中的值
             }
         }
@@ -103,8 +102,6 @@ public class HouseholdDaoimp implements HouseholdDao {
         object.add(start);
         object.add(rows);
         sql = stringBuilder.toString();
-        System.out.println(sql);
-        System.out.println(object);
 
         return template.query(sql,new BeanPropertyRowMapper<Household>(Household.class),object.toArray());
     }
