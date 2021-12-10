@@ -12,7 +12,7 @@ import java.util.*;
 
 public class BuildingDaoImp implements BuildingDao {
 
-    JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
+    private JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
 
         @Override
         public void addBuilding(Building building) {

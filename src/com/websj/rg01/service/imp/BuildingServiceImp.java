@@ -1,9 +1,12 @@
 package com.websj.rg01.service.imp;
 
 import com.websj.rg01.dao.BuildingDao;
+import com.websj.rg01.dao.RoomDao;
 import com.websj.rg01.dao.imp.BuildingDaoImp;
+import com.websj.rg01.dao.imp.RoomDaoImp;
 import com.websj.rg01.entity.Building;
 import com.websj.rg01.entity.PageBean;
+import com.websj.rg01.entity.vo.RoomVo;
 import com.websj.rg01.service.BuildingService;
 
 import java.util.List;
@@ -12,6 +15,8 @@ import java.util.Map;
 public class BuildingServiceImp implements BuildingService {
 
         BuildingDao buildingDao =new BuildingDaoImp();
+
+        RoomDao roomDao = new RoomDaoImp();
         @Override
         public void addBuilding(Building building) {
             buildingDao.addBuilding(building);

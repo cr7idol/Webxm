@@ -2,33 +2,41 @@ package com.websj.rg01.servlet;
 
 import com.websj.rg01.entity.Building;
 import com.websj.rg01.entity.Household;
-import com.websj.rg01.entity.Room;
-import com.websj.rg01.entity.vo.RoomVo;
 import com.websj.rg01.service.BuildingService;
 import com.websj.rg01.service.HouseholdService;
 import com.websj.rg01.service.imp.BuildingServiceImp;
 import com.websj.rg01.service.imp.HouseholdServiceImp;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-@WebServlet("/FindallBuildingListServlet")
-public class FindallBuildingListServlet extends HttpServlet {
+@WebServlet("/updateBuildingServlet")
+public class updateBuildingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //调用service中的findallBuilding方法完成查询
+        //设置编码
+        request.setCharacterEncoding("utf-8");
+        //获取参数
+        Map<String, String[]> map = request.getParameterMap();
+        Building building = new Building();
+        try {
+            BeanUtils.populate(building,map);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        //调用service保存
         BuildingService buildingService = new BuildingServiceImp();
-        List<Building> buildings = buildingService.findallBuilding();
-        //讲household存入request域中
-        request.setAttribute("buildings",buildings);
-        //转发
-        request.getRequestDispatcher("").forward(request,response);
+        buildingService.updateBuilding(building);
 
+        //跳转到
+        response.sendRedirect(request.getContextPath()+"/FindallBuildingListServlet");
     }
 
     @Override

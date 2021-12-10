@@ -5,7 +5,7 @@ import java.util.Date;
 public class Community {
     private int id;           //社区id
     private String name;      //社区名称
-    private int buiding;      //楼宇数量
+    private int building;      //楼宇数量
     private int park;         //车位数量
     private String CREATE_BY; //创建人
     private Date CREATE_TIME; //创建时间
@@ -14,10 +14,10 @@ public class Community {
 
     public Community() {}
 
-    public Community(int id, String name, int buiding, int park, String CREATE_BY, Date CREATE_TIME, String UPDATE_BY, Date UPDATE_TIME) {
+    public Community(int id, String name, int building, int park, String CREATE_BY, Date CREATE_TIME, String UPDATE_BY, Date UPDATE_TIME) {
         this.id = id;
         this.name = name;
-        this.buiding = buiding;
+        this.building = building;
         this.park = park;
         this.CREATE_BY = CREATE_BY;
         this.CREATE_TIME = CREATE_TIME;
@@ -41,12 +41,12 @@ public class Community {
         this.name = name;
     }
 
-    public int getBuiding() {
-        return buiding;
+    public int getBuilding() {
+        return building;
     }
 
-    public void setBuiding(int buiding) {
-        this.buiding = buiding;
+    public void setBuilding(int building) {
+        this.building = building;
     }
 
     public int getPark() {
@@ -94,7 +94,7 @@ public class Community {
         return "community{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", buiding=" + buiding +
+                ", building=" + building +
                 ", park=" + park +
                 ", CREATE_BY='" + CREATE_BY + '\'' +
                 ", CREATE_TIME=" + CREATE_TIME +

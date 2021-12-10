@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CommunityDaoImp implements CommunityDao {
-    JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
+    private JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
 
     @Override
     public void deleteCommunity(int id) {
@@ -30,13 +30,13 @@ public class CommunityDaoImp implements CommunityDao {
     public void addCommnuity(Community community) { //添加小区信息
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String sql = "insert into community value(null,?,?,?,null,?,null,?)";
-        jdbcTemplate.update(sql,community.getName(),community.getBuiding(),community.getPark(),df.format(new Date()),df.format(new Date()));
+        jdbcTemplate.update(sql,community.getName(),community.getBuilding(),community.getPark(),df.format(new Date()),df.format(new Date()));
     }
 
     @Override
     public void updateCommunity(Community community) {  //更新小区信息
         String sql = "update community set name = ?,building = ?,park = ?";
-        jdbcTemplate.update(sql,community.getName(),community.getBuiding(),community.getPark());
+        jdbcTemplate.update(sql,community.getName(),community.getBuilding(),community.getPark());
 
 
 

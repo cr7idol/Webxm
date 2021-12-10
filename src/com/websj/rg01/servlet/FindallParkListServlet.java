@@ -1,34 +1,29 @@
 package com.websj.rg01.servlet;
 
-import com.websj.rg01.entity.Building;
 import com.websj.rg01.entity.Household;
-import com.websj.rg01.entity.Room;
-import com.websj.rg01.entity.vo.RoomVo;
-import com.websj.rg01.service.BuildingService;
+import com.websj.rg01.entity.Park;
 import com.websj.rg01.service.HouseholdService;
-import com.websj.rg01.service.imp.BuildingServiceImp;
+import com.websj.rg01.service.ParkService;
 import com.websj.rg01.service.imp.HouseholdServiceImp;
+import com.websj.rg01.service.imp.ParkServiceImp;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-@WebServlet("/FindallBuildingListServlet")
-public class FindallBuildingListServlet extends HttpServlet {
+@WebServlet("/FindallParkListServlet")
+public class FindallParkListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //调用service中的findallBuilding方法完成查询
-        BuildingService buildingService = new BuildingServiceImp();
-        List<Building> buildings = buildingService.findallBuilding();
+        //调用service中的额findall方法完成查询
+        ParkService parkService = new ParkServiceImp();
+        List<Park> parks = parkService.findAllParkUser();
         //讲household存入request域中
-        request.setAttribute("buildings",buildings);
+        request.setAttribute("parks",parks);
         //转发
         request.getRequestDispatcher("").forward(request,response);
-
     }
 
     @Override
